@@ -59,17 +59,17 @@ This tests **all** available APIs and provides detailed results.
    ```bash
    pip install -e .
    ```
-3. **Network Access**: Ensure you can reach `https://stream.cataloghub.in`
+3. *
 
 ## 📋 **Test Configuration**
 
 The tests are configured with your credentials:
 
 ```python
-RESTREAMER_URL = "https://stream.cataloghub.in"
+RESTREAMER_URL = ""
 CREDENTIALS = {
-    "username": "admin",
-    "password": "datarhei"
+    "username": "",
+    "password": ""
 }
 ```
 
@@ -152,7 +152,6 @@ After all tests complete, you'll see:
 - Ensure the server is accessible
 
 ### **Network Errors**
-- Verify `https://stream.cataloghub.in` is reachable
 - Check firewall settings
 - Verify SSL certificate is valid
 

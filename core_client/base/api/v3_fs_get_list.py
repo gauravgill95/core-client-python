@@ -27,7 +27,7 @@ def _build_request(
 
 def _build_response(response: httpx.Response):
     if response.status_code == 200:
-        response_200 = TypeAdapter(response.json().validate_python(from_attributes=True))
+        response_200 = TypeAdapter(FilesystemList).validate_python(response.json(), from_attributes=True)
         return response_200
     else:
         response_error = TypeAdapter(Error).validate_python(response.json(), from_attributes=True)

@@ -8,11 +8,6 @@ import traceback
 from core_client import Client
 
 # Configuration
-RESTREAMER_URL = "https://stream.cataloghub.in"
-CREDENTIALS = {
-    "username": "admin",
-    "password": "datarhei"
-}
 
 def test_basic_connectivity():
     """Test basic connectivity and authentication."""

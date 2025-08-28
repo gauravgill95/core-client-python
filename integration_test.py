@@ -11,11 +11,7 @@ from typing import Dict, List, Any
 from core_client import Client, AsyncClient
 
 # Configuration
-RESTREAMER_URL = "https://stream.cataloghub.in"
-CREDENTIALS = {
-    "username": "admin",
-    "password": "datarhei"
-}
+
 
 class IntegrationTestSuite:
     """Comprehensive integration test suite for Restreamer APIs."""

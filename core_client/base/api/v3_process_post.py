@@ -3,7 +3,7 @@ from pydantic import TypeAdapter
 
 from ...models import Client
 from ..models import Error
-from ..models.v3 import ProcessConfig
+from ..models.v3 import ProcessConfig, Process
 
 
 def _build_request(
@@ -30,7 +30,7 @@ def _build_request(
 
 def _build_response(response: httpx.Response):
     if response.status_code == 200:
-        response_200 = TypeAdapter(response.json().validate_python(from_attributes=True))
+        response_200 = TypeAdapter(Log).validate_python(response.json(), from_attributes=True)
         return response_200
     else:
         response_error = TypeAdapter(Error).validate_python(response.json(), from_attributes=True)
