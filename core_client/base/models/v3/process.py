@@ -18,14 +18,14 @@ class Process(BaseModel):
     }
     """
 
-    config: Optional[ProcessConfig]
-    created_at: int
-    id: str
-    metadata: Optional[Dict]
-    reference: str
-    state: Optional[ProcessState]
-    report: Optional[ProcessReport]
-    type: ProcessConfigType
+    config: Optional[ProcessConfig] = None
+    created_at: Optional[int] = None
+    id: Optional[str] = None
+    metadata: Optional[Dict] = None
+    reference: Optional[str] = None
+    state: Optional[ProcessState] = None
+    report: Optional[ProcessReport] = None
+    type: Optional[ProcessConfigType] = None
 
     class Config:
         use_enum_values = True
