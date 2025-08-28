@@ -1,4 +1,4 @@
-from pydantic import BaseModel, root_validator
+from pydantic import BaseModel, model_validator
 from typing import Optional
 
 
@@ -14,16 +14,16 @@ class SrtConnectionStats(BaseModel):
 
     """
     {
-        "timestamp_ms": 2325052658,
+        "timestamp_ms": 1703894400000,
         "sent_pkt": 0,
-        "recv_pkt": 598424409,
+        "recv_pkt": 0,
         "sent_unique_pkt": 0,
-        "recv_unique_pkt": 598424402,
+        "recv_unique_pkt": 0,
         "send_loss_pkt": 0,
-        "recv_loss_pkt": 9,
+        "recv_loss_pkt": 0,
         "sent_retrans_pkt": 0,
-        "recv_retran_pkts": 7,
-        "sent_ack_pkt": 147773635,
+        "recv_retran_pkts": 0,
+        "sent_ack_pkt": 0,
         "recv_ack_pkt": 0,
         "sent_nak_pkt": 2,
         "recv_nak_pkt": 0,
@@ -35,8 +35,10 @@ class SrtConnectionStats(BaseModel):
         "recv_undecrypt_pkt": 0,
         "sent_bytes": 0,
         "recv_bytes": 680449226780,
+        "sent_unique__bytes": 0,
         "sent_unique_bytes": 0,
         "recv_unique_bytes": 680449217120,
+        "recv_loss__bytes": 0,
         "recv_loss_bytes": 9295,
         "sent_retrans_bytes": 0,
         "send_drop_bytes": 0,
@@ -114,12 +116,13 @@ class SrtConnectionStats(BaseModel):
     reorder_tolerance_pkt: int
     pkt_recv_avg_belated_time_ms: int
 
-    @root_validator(pre=False)
+    @model_validator(mode='after')
+    @classmethod
     def remove_empty(cls, values):
-        if values["sent_unique__bytes"] is None:
-            values.pop("sent_unique__bytes")
-            values.pop("recv_loss__bytes")
+        if values.sent_unique__bytes is None:
+            values.sent_unique__bytes = None
+            values.recv_loss__bytes = None
         else:
-            values.pop("sent_unique_bytes")
-            values.pop("recv_loss_bytes")
+            values.sent_unique_bytes = None
+            values.recv_loss_bytes = None
         return values

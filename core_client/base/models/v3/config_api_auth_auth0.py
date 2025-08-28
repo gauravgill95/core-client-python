@@ -13,4 +13,4 @@ class ConfigApiAuthAuth0(BaseModel):
     """
 
     enable: Optional[bool]
-    tenants: Optional[List[ConfigApiAuthAuth0Tenant]]
+    tenants: Optional[list[ConfigApiAuthAuth0Tenant]]

@@ -1,12 +1,11 @@
 import httpx
-from pydantic import parse_obj_as, validate_arguments
+from pydantic import TypeAdapter
 
 from ...models import Client
 from ..models import Error
 from ..models.v3 import ClusterNodeAuth
 
 
-@validate_arguments()
 def _build_request(
     client: Client,
     id: str,
@@ -15,7 +14,7 @@ def _build_request(
     timeout: float = None,
 ):
     if not isinstance(node, dict):
-        node = node.dict()
+        node = node.model_dump()
     if not retries:
         retries = client.retries
     if not timeout:
@@ -35,7 +34,7 @@ def _build_response(response: httpx.Response):
         response_200 = response.json()
         return response_200
     else:
-        response_error = parse_obj_as(Error, response.json())
+        response_error = TypeAdapter(Error).validate_python(response.json(), from_attributes=True)
         return response_error
 
 

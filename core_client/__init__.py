@@ -7,9 +7,8 @@ import json
 from datetime import datetime
 from httpx import InvalidURL as HttpInvalidURL, HTTPError
 from pydantic import (
-    HttpUrl,
+    AnyUrl,
     ValidationError as PydanticValidationError,
-    validate_arguments,
 )
 
 from . import base
@@ -18,10 +17,9 @@ from .base.models import Token, AccessToken, About
 
 
 class Client:
-    @validate_arguments()
     def __init__(
         self,
-        base_url: HttpUrl,
+        base_url: AnyUrl,
         username: str = None,
         password: str = None,
         access_token: str = None,
@@ -34,10 +32,12 @@ class Client:
             "accept": "application/json",
             "content-type": "application/json",
         }
-        if base_url.endswith("/"):
-            self.base_url = base_url[:-1]
+        # Convert AnyUrl to string and handle trailing slash
+        base_url_str = str(base_url)
+        if base_url_str.endswith("/"):
+            self.base_url = base_url_str[:-1]
         else:
-            self.base_url = base_url
+            self.base_url = base_url_str
         self.username = username
         self.password = password
         self.access_token = access_token

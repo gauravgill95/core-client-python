@@ -26,10 +26,10 @@ class ProcessConfig(BaseModel):
 
     autostart: bool = True
     id: str
-    input: List[ProcessConfigIO]
+    input: list[ProcessConfigIO]
     limits: Optional[ProcessConfigLimit]
-    options: List[str]
-    output: List[ProcessConfigIO]
+    options: list[str]
+    output: list[ProcessConfigIO]
     reconnect: bool = True
     reconnect_delay_seconds: int = 60
     reference: str

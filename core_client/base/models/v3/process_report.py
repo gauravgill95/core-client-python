@@ -19,4 +19,4 @@ class ProcessReport(ProcessReportHistory):
     }
     """
 
-    history: List[ProcessReportHistory]
+    history: list[ProcessReportHistory]

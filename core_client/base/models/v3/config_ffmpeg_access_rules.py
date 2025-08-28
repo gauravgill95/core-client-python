@@ -10,5 +10,5 @@ class ConfigFfmpegAccessRules(BaseModel):
     }
     """
 
-    allow: Optional[List[str]]
-    block: Optional[List[str]]
+    allow: Optional[list[str]]
+    block: Optional[list[str]]

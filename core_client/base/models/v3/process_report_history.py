@@ -19,5 +19,5 @@ class ProcessReportHistory(BaseModel):
     """
 
     created_at: int
-    log: List[List[str]]
-    prelude: List[str]
+    log: list[list[str]]
+    prelude: list[str]

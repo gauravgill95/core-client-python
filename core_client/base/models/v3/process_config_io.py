@@ -23,6 +23,6 @@ class ProcessConfigIO(BaseModel):
     """
 
     address: str
-    cleanup: Optional[List[ProcessConfigIOCleanup]]
+    cleanup: Optional[list[ProcessConfigIOCleanup]]
     id: str
-    options: Optional[List[str]]
+    options: Optional[list[str]]

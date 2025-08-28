@@ -31,7 +31,7 @@ class ProcessState(BaseModel):
     }
     """
 
-    command: List[str]
+    command: list[str]
     cpu_usage: float
     exec: ProcessStateExec
     last_logline: str

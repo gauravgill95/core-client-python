@@ -16,7 +16,7 @@ class ConfigSessions(BaseModel):
     """
 
     enable: Optional[bool]
-    ip_ignorelist: Optional[List[str]]
+    ip_ignorelist: Optional[list[str]]
     session_timeout_sec: Optional[int]
     persist: Optional[bool]
     persist_interval_sec: Optional[int]

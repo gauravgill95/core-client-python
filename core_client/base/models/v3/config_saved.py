@@ -21,4 +21,4 @@ class ConfigSaved(BaseModel):
     loaded_at: Optional[str]
     updated_at: Optional[str]
     config: Optional[Config]
-    overrides: Optional[List[str]]
+    overrides: Optional[list[str]]

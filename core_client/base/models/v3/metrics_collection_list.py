@@ -4,4 +4,4 @@ from . import MetricsCollection
 
 
 class MetricsCollectionList(BaseModel):
-    __root__: list[MetricsCollection]
+    data: list[MetricsCollection]

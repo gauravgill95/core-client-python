@@ -1,12 +1,11 @@
 import httpx
-from pydantic import parse_obj_as, validate_arguments
+from pydantic import TypeAdapter
 
 from ...models import Client
 from ..models import Error
 from ..models.v3 import Metadata
 
 
-@validate_arguments()
 def _build_request(
     client: Client,
     key: str,
@@ -15,7 +14,7 @@ def _build_request(
     timeout: float = None,
 ):
     if not isinstance(data, dict):
-        data = data.dict()["__root__"]
+        data = data.model_dump()["__root__"]
     if not retries:
         retries = client.retries
     if not timeout:
@@ -32,10 +31,10 @@ def _build_request(
 
 def _build_response(response: httpx.Response):
     if response.status_code == 200:
-        response_200 = parse_obj_as(Metadata, response.json()).__root__
+        response_200 = TypeAdapter(response.json().validate_python(from_attributes=True)).data
         return response_200
     else:
-        response_error = parse_obj_as(Error, response.json())
+        response_error = TypeAdapter(Error).validate_python(response.json(), from_attributes=True)
         return response_error
 
 

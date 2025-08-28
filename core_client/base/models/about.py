@@ -14,7 +14,7 @@ class AboutVersion(BaseModel):
 
 class About(BaseModel):
     app: str
-    auths: Optional[List[str]]
+    auths: Optional[list[str]]
     created_at: Optional[datetime]
     id: Optional[str]
     name: Optional[str]

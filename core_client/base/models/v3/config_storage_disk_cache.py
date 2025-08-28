@@ -29,4 +29,4 @@ class ConfigStorageDiskCache(BaseModel):
     max_size_mbytes: Optional[int]
     ttl_seconds: Optional[int]
     max_file_size_mbytes: Optional[int]
-    types: Optional[Union[List[str], ConfigStorageDiskCacheTypes]]
+    types: Optional[Union[list[str], ConfigStorageDiskCacheTypes]]

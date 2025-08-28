@@ -10,5 +10,5 @@ class ConfigHost(BaseModel):
     }
     """
 
-    name: Optional[List[str]]
+    name: Optional[list[str]]
     auto: Optional[bool]

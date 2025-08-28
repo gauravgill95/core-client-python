@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 install_requirements = [
     "httpx[http2]>=0.23.0",
-    "pydantic>=1.10.2",
+    "pydantic>=2.5.2",
     "pydantic-collections>=0.3.0",
 ]
 tests_requirements = [

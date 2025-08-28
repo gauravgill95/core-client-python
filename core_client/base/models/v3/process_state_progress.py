@@ -27,8 +27,8 @@ class ProcessStateProgress(BaseModel):
     dup: int
     fps: float
     frame: int
-    inputs: List[ProcessStateProgressIO]
-    outputs: List[ProcessStateProgressIO]
+    inputs: list[ProcessStateProgressIO]
+    outputs: list[ProcessStateProgressIO]
     packet: int
     q: float
     size_kb: int

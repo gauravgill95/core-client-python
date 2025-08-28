@@ -1,5 +1,5 @@
 from typing import Optional
-from pydantic import BaseModel, root_validator
+from pydantic import BaseModel, model_validator
 
 from . import ProcessStateProgressIOAvstream
 
@@ -59,10 +59,12 @@ class ProcessStateProgressIO(BaseModel):
     type: str
     width: Optional[int]
 
-    @root_validator(pre=True)
+    @model_validator(mode='before')
+    @classmethod
     def remove_empty(cls, values):
-        fields = list(values.keys())
-        for field in fields:
-            if values[field] == {}:
-                values.pop(field)
+        if isinstance(values, dict):
+            fields = list(values.keys())
+            for field in fields:
+                if values[field] == {}:
+                    values.pop(field)
         return values

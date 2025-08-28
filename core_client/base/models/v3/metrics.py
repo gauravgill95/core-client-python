@@ -14,5 +14,5 @@ class Metrics(BaseModel):
     """
 
     interval_sec: Optional[int]
-    metrics: List[MetricsMonitor]
+    metrics: list[MetricsMonitor]
     timerange_sec: Optional[int]

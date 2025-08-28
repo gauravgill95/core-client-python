@@ -11,4 +11,4 @@ class ConfigSrtLog(BaseModel):
     """
 
     enable: Optional[bool]
-    topics: Optional[List[str]]
+    topics: Optional[list[str]]
